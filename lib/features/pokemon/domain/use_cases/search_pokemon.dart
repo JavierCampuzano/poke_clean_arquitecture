@@ -3,13 +3,12 @@ import 'package:poke_app/core/failures.dart';
 import 'package:poke_app/features/pokemon/domain/entities/pokemon.dart';
 import 'package:poke_app/features/pokemon/domain/repositories/pokemons_repository.dart';
 
-class CapturePokemonUserCase {
-  
+class SearchPokemon {
   final PokemonsRepository repository;
 
-  CapturePokemonUserCase({required this.repository});
+  SearchPokemon({required this.repository});
 
-  Future<Either<Failure, bool>> call(Pokemon pokemon){
-    return repository.capturePokemon(pokemon);
+  Future<Either<Failure,Pokemon>> call(int id){
+    return repository.getPokemon(id);
   } 
 }

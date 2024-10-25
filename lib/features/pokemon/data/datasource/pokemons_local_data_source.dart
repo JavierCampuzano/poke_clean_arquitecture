@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:poke_app/core/failures.dart';
+import 'package:poke_app/core/error/failures.dart';
 import 'package:poke_app/features/pokemon/data/models/pokemon_model.dart';
 import 'package:poke_app/features/pokemon/domain/entities/pokemon.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -9,9 +9,9 @@ abstract class PokemonsLocalDataSource {
   Future<List<PokemonModel>> getCapturesPokemonList();
 }
 
-class HivePokemonLocalDataSourceImp implements PokemonsLocalDataSource {
+class HivePokemonLocalDataSourceImpl implements PokemonsLocalDataSource {
 
-  HivePokemonLocalDataSourceImp(){
+  HivePokemonLocalDataSourceImpl(){
     Hive.initFlutter();
   }
 

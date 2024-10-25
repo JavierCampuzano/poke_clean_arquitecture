@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:poke_app/core/failures.dart';
+import 'package:poke_app/core/error/failures.dart';
 import 'package:poke_app/features/pokemon/domain/entities/pokemon.dart';
 
 abstract class PokemonsRepository{

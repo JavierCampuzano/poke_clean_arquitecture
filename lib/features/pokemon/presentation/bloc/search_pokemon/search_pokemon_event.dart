@@ -14,3 +14,10 @@ class OnCapturePokemon extends SearchPokemonEvent {
 class OnGetCapturedPokemons extends SearchPokemonEvent {
   OnGetCapturedPokemons();
 }
+
+
+class OnDeletePokemon extends SearchPokemonEvent {
+  final List<Pokemon> pokemons;
+
+  OnDeletePokemon({required this.pokemons});
+}

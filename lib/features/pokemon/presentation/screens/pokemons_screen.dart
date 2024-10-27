@@ -77,6 +77,11 @@ class PokemonsScreen extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () => BlocProvider.of<SearchPokemonBloc>(context)
+                        .add(OnDeletePokemon(pokemons: state.pokemons)),
+                    child: const Text('Eliminar el primer pokemon capturado'),
+                  ),
+                  TextButton(
+                    onPressed: () => BlocProvider.of<SearchPokemonBloc>(context)
                         .add(OnSearchPokemon()),
                     child: const Text('Volver y generar pokemon'),
                   ),

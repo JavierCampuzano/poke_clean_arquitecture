@@ -4,6 +4,7 @@ import 'package:poke_app/features/pokemon/data/datasource/pokemons_remote_data_s
 import 'package:poke_app/features/pokemon/data/repositories/pokemon_repository_impl.dart';
 import 'package:poke_app/features/pokemon/domain/repositories/pokemons_repository.dart';
 import 'package:poke_app/features/pokemon/domain/use_cases/capture_pokemon.dart';
+import 'package:poke_app/features/pokemon/domain/use_cases/delete_pokemon.dart';
 import 'package:poke_app/features/pokemon/domain/use_cases/get_capture_pokemons.dart';
 import 'package:poke_app/features/pokemon/domain/use_cases/search_pokemon.dart';
 import 'package:poke_app/features/pokemon/presentation/bloc/search_pokemon/search_pokemon_bloc.dart';
@@ -18,6 +19,7 @@ Future<void> init() async {
       di(),
       di(),
       di(),
+      di()
     ),
   );
 
@@ -34,6 +36,11 @@ Future<void> init() async {
   );
   di.registerLazySingleton(
     () => SearchPokemonUseCase(
+      repository: di(),
+    ),
+  );
+  di.registerLazySingleton(
+    () => DeletePokemonUseCase(
       repository: di(),
     ),
   );

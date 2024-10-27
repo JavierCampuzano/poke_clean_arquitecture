@@ -45,4 +45,14 @@ class PokemonRepositoryIml implements PokemonsRepository{
     }
   }
   
+  @override
+  Future<Either<Failure, List<Pokemon>>> deletePokemon(Pokemon pokemon) async {
+    try {
+      final List<Pokemon> response = await pokemonsLocalDataSource.deletePokemon(pokemon);
+      return Right(response);
+    } on LocalFailure{
+      return Left(ServerFailure());
+    }
+  }
+  
 }

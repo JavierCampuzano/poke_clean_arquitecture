@@ -7,6 +7,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 abstract class PokemonsLocalDataSource {
   Future<bool> capturePokemon(Pokemon pokemon);
   Future<List<PokemonModel>> getCapturesPokemonList();
+  Future<List<Pokemon>> deletePokemon(Pokemon pokemon);
 }
 
 class HivePokemonLocalDataSourceImpl implements PokemonsLocalDataSource {
@@ -35,6 +36,19 @@ class HivePokemonLocalDataSourceImpl implements PokemonsLocalDataSource {
     try {
       Box<dynamic> box = await Hive.openBox('pokemons');
 
+      return box.values.map((pokemon) => PokemonModel.fromJson(pokemon)).toList();
+    } catch (error) {
+      debugPrint(error.toString());
+      throw LocalFailure();
+    }
+  }
+  
+  @override
+  Future<List<Pokemon>> deletePokemon(Pokemon pokemon) async{
+    try {
+      Box<dynamic> box = await Hive.openBox('pokemons');
+      
+      box.delete(pokemon.id);
       return box.values.map((pokemon) => PokemonModel.fromJson(pokemon)).toList();
     } catch (error) {
       debugPrint(error.toString());
